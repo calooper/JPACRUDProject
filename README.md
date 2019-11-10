@@ -17,9 +17,13 @@ how I wanted the front-side interface flow.
 
 ### TECHNOLOGIES USED
 --MVC pattern for separation of concerns
+
 --Spring Boot to expedite the development process.
+
 --Java Persistence API (JPA) for relational mapping and for simplifying the persistence of POJOs
+
 --Java Persistence Query Language for querying the database.
+
 --Amazon Web Services (AWS) for deploying the application
 
 -- Java, HTML, CSS, Bootstrap
