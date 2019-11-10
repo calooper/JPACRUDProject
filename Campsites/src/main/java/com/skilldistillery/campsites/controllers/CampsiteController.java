@@ -45,6 +45,7 @@ public class CampsiteController {
 		System.out.println(cid);
 		List<Campsite> campsiteList = new ArrayList();;
 		
+		
 		Campsite campsite = campsiteDAO.findById(cid);
 		campsiteList.add(campsite);
 

@@ -60,11 +60,7 @@
 
 
 <!-- Start Paste -->
-
-
-
 <div class="topnav navbar-fixed-top" >
-
   <a href="index.do"><i class="fa fa-fw fa-home"></i> Home</a>
  <!--  <a href="#about">About</a>
   <a href="#contact">Contact</a> -->
@@ -75,14 +71,9 @@
     </form>
   </div>
 </div>
-
-
-
-
-
-
-
 <body> 
+
+
 
 
   <!-- ========== HEADER SECTION ========== -->
@@ -96,7 +87,7 @@
       <div class="row">
         <h1>SAVE A SPOT</h1>
         <br>
-        <h3>A webite designed to remember campsites</h3>
+        <h3>A webite designed to remember your campsite locations</h3>
         <br>
         <br>
         <div class="col-lg-6 col-lg-offset-3">
@@ -107,10 +98,10 @@
   </div>
   <!-- /headerwrap -->
 
+
+
+
   <!-- ========== TABLE SECTION ========== -->
-
-
-
   <br>
   <br>
   <div style="background-color: white" class="row" >
@@ -135,15 +126,13 @@
         
         
         <c:choose>
-    		<c:when test="${campsite.id == null}">
-        		<strong style="padding-left:35em; color:red">Sorry, no campsite with this Id exists</strong>
+    		<c:when test="${campsite.id == null }">
+        		<strong style="padding-left:35em; color:red">Sorry, no campsite with this Id found</strong>
        		 	<br>
        		  	<br>
        		   <br>
-    		</c:when>    
+    		</c:when>        
     	<c:otherwise>
-       		
-        
           <tr id="d1">
           	<td></td>
           	<td></td>
@@ -155,16 +144,11 @@
 
 
             <td>
-              <%-- <form action="editCampsite.do" method="GET" > --%>
-
               <button type="submit" data-toggle="modal" value=${ campsite.id} name="campsite" data-target="#edit2" data-uid="2" class="update btn btn-warning btn-sm">
                 <span class="glyphicon glyphicon-pencil"></span>
               </button>
-
-              <%-- </form> --%>
             </td>
-            <td>
-              <%-- <jsp:forward page="deleteCampsite.do" /> --%>
+            <td>     
               <form action="deleteCampsite.do" method="GET" name="id" value=${ campsite.id}>
 
                 <button data-target="#delete" type="submit" data-toggle="modal" data-uid="1" class="delete btn btn-danger btn-sm" name="id" value=${ campsite.id}>
@@ -181,20 +165,14 @@
            </c:otherwise>
 		</c:choose>
         </c:forEach>
-
-        <%-- 	<form action="addCampsite.do" method="GET"> <%--  --%>
+        
         <tr id="d2">
-
-          <!--  <td id="f2">Jane</td> -->
-           <td><input type="hidden" id="f2"></td>
-            <td><input type="hidden" id="f2"></td>
+     
           <td><input type="hidden" id="f2"></td>
-          <!-- <td id="l2">Wick</td> -->
+          <td><input type="hidden" id="f2"></td>
+          <td><input type="hidden" id="f2"></td>
           <td><input type="hidden" id="l2"></td>
-
-          <!-- <td id="m1">Doe</td> -->
           <td><input type="hidden" id="m1"></td>
-          <!-- <td id="m2">Map</td> -->
           <td><input type="hidden" id="m2"></td>
 
 
@@ -205,13 +183,7 @@
               <span class="glyphicon glyphicon-plus" value="Submit Button"></span>
             </button></td>
           </td>
-
-
         </tr>
-
-        <%-- 	</form> --%>
-
-
       </tbody>
     </table>
   </div>
@@ -222,7 +194,6 @@
   <div id="edit" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
-
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"></button>
           <h4 class="modal-title">Add a Campsite </h4>
@@ -268,7 +239,7 @@
 
         <form action="editCampsite.do" method="GET">
           <div class="modal-body">
-            <input type="number" class="form-control" name="id" placeholder="${ campsiteToBeEdited.description }" required>
+            <input type="number" class="form-control" name="id" placeholder="Id" required>
 
             <input type="text" class="form-control" name="description" placeholder="Description" required>
 
@@ -333,16 +304,6 @@
 
       </p>
       <div class="credits">
-        <!--
-          You are NOT allowed to delete the credit link to TemplateMag with free version.
-          You can delete the credit link only if you bought the pro version.
-          Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/minimal-bootstrap-template/
-          Licensing information: https://templatemag.com/license/
-        -->
-        Created with Minimal template by <a href="https://templatemag.com/">TemplateMag</a>
-      </div>
-    </div>
-  </div>
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
