@@ -22,13 +22,20 @@ public class CampsiteController {
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(Model model) {
 
-//		model.addAttribute("campsite", campsite);
-//	
-//		mv.addObject("films", films);
-//		mv.setViewName("WEB-INF/film/show.jsp");
+		System.out.println("in start controller method");
+		return "getAllCampsites.do";
+
+	}
+
+	@RequestMapping(path = "getAllCampsites.do", method = RequestMethod.GET)
+	public String getAllCampsites(Model model) {
+		List<Campsite> campsiteList;
+
+		System.out.println("in get all");
+		campsiteList = campsiteDAO.getAllCampsites();
+		model.addAttribute("campsiteList", campsiteList);
 
 		return "WEB-INF/index.jsp";
-
 	}
 
 	@RequestMapping(path = "getCampsite.do", method = RequestMethod.GET)
@@ -37,56 +44,51 @@ public class CampsiteController {
 
 		Campsite campsite = campsiteDAO.findById(cid);
 
+		System.out.println("in get");
 		mv.addObject("campsite", campsite);
 		mv.setViewName("WEB-INF/campsite/show.jsp");
 		return mv;
 	}
 
-	@RequestMapping(path = "getAllCampsites.do", method = RequestMethod.GET)
-	public String getAllCampsites(Model model) {
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping(path = "deleteCampsite.do", method = RequestMethod.GET)
+	public String deleteCampsite(@RequestParam("id") int id, Model model) {
 		List<Campsite> campsiteList;
 
-//		model.addAttribute("campsiteList", campsiteList);
+		System.out.println("in delete 666666");
+		boolean result = campsiteDAO.deleteCampsite(id);
 
 		campsiteList = campsiteDAO.getAllCampsites();
-
 		model.addAttribute("campsiteList", campsiteList);
 
-//		System.out.println(campsiteList);
-//		mv.addObject("campsiteList", campsiteList);
-//		mv.setViewName("WEB-INF/campsite/show.jsp");
-		for (Campsite campsite : campsiteList) {
-			System.out.println(campsite);
-			System.out.println("hello");
-		}
+		return "WEB-INF/index.jsp";
+	}
+
+	@RequestMapping(path = "addCampsite.do", method = RequestMethod.POST)
+	public String addCampsite(@RequestParam String description, String state, String mountainRange, String latitude,
+			String longitude, Model model) {
+
+		double latitudeD = Double.parseDouble(latitude);
+		double longitudeD = Double.parseDouble(latitude);
+
+		Campsite newCampSite = campsiteDAO.addCampsite(description, state, latitudeD, longitudeD, mountainRange);
+
+		List<Campsite> campsiteList;
+		campsiteList = campsiteDAO.getAllCampsites();
+		model.addAttribute("campsiteList", campsiteList);
 		
-		return "WEB-INF/campsite/showAll.jsp";
+		
+		
+		return "WEB-INF/index.jsp";
+
 	}
 
-	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.GET)
-	public ModelAndView deleteCampsite(@RequestParam("id") int id) {
-		ModelAndView mv = new ModelAndView();
-//		List<Campsite> campsiteList;
+	@RequestMapping(path = "index.do", method = RequestMethod.GET)
+	public String home(Model model) {
+		List<Campsite> campsiteList;
+		campsiteList = campsiteDAO.getAllCampsites();
+		model.addAttribute("campsiteList", campsiteList);
 
-//		model.addAttribute("campsiteList", campsiteList);
-		boolean result;
-
-		result = campsiteDAO.deleteCampsite(id);
-		mv.addObject("result", result);
-		mv.setViewName("WEB-INF/campsite/show.jsp");
-		return mv;
-	}
-
-	@RequestMapping(path = "addcampsite.do", method = RequestMethod.GET)
-	public String addCampsite() {
-
-//		model.addAttribute("campsite", campsite);
-//	
-//		mv.addObject("films", films);
-//		mv.setViewName("WEB-INF/film/show.jsp");
-
-		return "WEB-INF/addcampsite.jsp";
+		return "WEB-INF/index.jsp";
 
 	}
 

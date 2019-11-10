@@ -19,7 +19,7 @@
 
 
 
-		<form action="deleteFilm.do" method="GET">
+		<form action="deleteCampsite.do" method="GET">
 			<input type="hidden" name="id" value=${ campsite.id} /> <input
 				type="submit" value="Delete this campsite" />
 		</form>

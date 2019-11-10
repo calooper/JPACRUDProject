@@ -37,7 +37,8 @@ class CampsiteTest {
 	void setUp() throws Exception {
 		
 		em = emf.createEntityManager();
-		campsite = em.find(Campsite.class, 1);
+		campsite = em.find(Campsite.class, 5);
+		
 	}
 
 	@AfterEach
@@ -50,8 +51,8 @@ class CampsiteTest {
 	@Test
 	@DisplayName("testing not null")
 	void test() {
-		assertNotNull(campsite);
-		assertEquals("fun place", campsite.getDescription());
+//		assertNotNull(campsite);
+		assertEquals("dry", campsite.getDescription());
 	}
 
 }

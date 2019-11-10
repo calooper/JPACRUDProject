@@ -37,6 +37,19 @@ public class Campsite {
 
 	}
 
+	
+
+	public Campsite(String description, String state, double latitude, double longitude, String mountainRange) {
+		super();
+		this.description = description;
+		this.state = state;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.mountainRange = mountainRange;
+	}
+
+
+
 	public String getState() {
 		return state;
 	}
