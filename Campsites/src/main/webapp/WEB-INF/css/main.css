@@ -1,50 +1,10 @@
 body, html {
 	height: 90%;
+	
 }
 
-.bg {
-	/* The image used */
-	background-image:
-		url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
-	background-attachment: fixed;
-	/* Full height */
-	height: 60%;
-	/* Center and scale the image nicely */
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	z-index: -10;
-	font-family: Arial, Helvetica, sans-serif;
-}
 
-.bg>h2 {
-	margin: auto;
-	top: 15%; */
-	line-height: 51px;
-	vertical-align: bottom;
-	color: white;
-	clear: both;
-	display: inline;
-	font-size: 45px;
-	position: fixed;
-	z-index: 1;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-.map-container-3 {
-	overflow: hidden;
-	padding-bottom: 16.25%;
-	position: relative;
-	height: 0;
-	top: 30%;
-}
-
-.map-container-3 iframe {
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	position: absolute;
+position: absolute;
 }
 
 .navbar {
@@ -56,7 +16,7 @@ body, html {
 }
 
 body {
-	margin: 0;
+	left: 20;
 	font-family: Arial, Helvetica, sans-serif;
 }
 

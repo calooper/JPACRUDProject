@@ -1,5 +1,6 @@
 package com.skilldistillery.campsites.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,12 +42,15 @@ public class CampsiteController {
 	@RequestMapping(path = "getCampsite.do", method = RequestMethod.GET)
 	public ModelAndView getCampsite(@RequestParam("cid") int cid) {
 		ModelAndView mv = new ModelAndView();
-
+		System.out.println(cid);
+		List<Campsite> campsiteList = new ArrayList();;
+		
 		Campsite campsite = campsiteDAO.findById(cid);
+		campsiteList.add(campsite);
 
 		System.out.println("in get");
-		mv.addObject("campsite", campsite);
-		mv.setViewName("WEB-INF/campsite/show.jsp");
+		mv.addObject("campsiteList", campsiteList);
+		mv.setViewName("WEB-INF/index.jsp");
 		return mv;
 	}
 

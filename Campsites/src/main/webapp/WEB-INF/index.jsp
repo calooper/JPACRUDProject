@@ -69,8 +69,8 @@
  <!--  <a href="#about">About</a>
   <a href="#contact">Contact</a> -->
   <div class="search-container">
-    <form action="getCampsite.do">
-      <input type="text" placeholder="Search by Id.." name="cid" method="GET">
+    <form action="getCampsite.do" method="GET">
+      <input type="text" placeholder="Search by Id.." name="cid" >
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
@@ -84,27 +84,6 @@
 
 <body> 
 
-  
-<!-- <body data-spy="scroll" data-offset="0" data-target="#theMenu"> -->
-
-  <!-- Menu -->
-<!--   <nav class="menu" id="theMenu">
-    <div class="menu-wrap">
-      <h1 class="logo"><a href="index.html#home">Minimal</a></h1>
-      <i class="fa fa-times-circle menu-close"></i>
-      <a href="#home" class="smoothscroll">Home</a>
-      <a href="#about" class="smoothscroll">About</a>
-      <a href="#portfolio" class="smoothscroll">Portfolio</a>
-      <a href="#contact" class="smoothscroll">Contact</a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-dribbble"></i></a>
-      <a href="#"><i class="fa fa-envelope"></i></a>
-    </div>
-
-    Menu button
-    <div id="menuToggle"><i class="fa fa-bars"></i></div>
-  </nav> -->
 
   <!-- ========== HEADER SECTION ========== -->
   <section id="home" name="home"></section>
@@ -134,12 +113,14 @@
 
   <br>
   <br>
-  <div style="background-color: white" class="row">
+  <div style="background-color: white" class="row" >
     <table class="table table-hover table-responsive">
 
 
       <thead>
         <tr>
+          <th></th>
+          <th></th>
           <th>ID</th>
           <th>Description</th>
           <th>State</th>
@@ -152,6 +133,8 @@
       <tbody>
         <c:forEach items="${ campsiteList}" var="campsite">
           <tr id="d1">
+          	<td></td>
+          	<td></td>
             <td>${campsite.id }</td>
             <td id="f1">${ campsite.description}</td>
             <td id="l1">${ campsite.state}</td>
@@ -172,7 +155,7 @@
               <%-- <jsp:forward page="deleteCampsite.do" /> --%>
               <form action="deleteCampsite.do" method="GET" name="id" value=${ campsite.id}>
 
-                <button type="submit" data-toggle="modal" data-uid="1" class="delete btn btn-danger btn-sm" name="id" value=${ campsite.id}>
+                <button data-target="#delete" type="submit" data-toggle="modal" data-uid="1" class="delete btn btn-danger btn-sm" name="id" value=${ campsite.id}>
 
                   <span class="glyphicon glyphicon-trash"></span>
 
@@ -187,6 +170,8 @@
         <tr id="d2">
 
           <!--  <td id="f2">Jane</td> -->
+           <td><input type="hidden" id="f2"></td>
+            <td><input type="hidden" id="f2"></td>
           <td><input type="hidden" id="f2"></td>
           <!-- <td id="l2">Wick</td> -->
           <td><input type="hidden" id="l2"></td>
@@ -215,7 +200,9 @@
     </table>
   </div>
   </div>
-  <!--  ADD POP_UP MENU-->
+  
+  
+  <!--  ADD A  SITE POP_UP MENU-->
   <div id="edit" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -251,7 +238,7 @@
     </div>
   </div>
 
-  <!-- Edit pop-up menu  -->
+  <!-- Edit a site pop-up menu  -->
 
   <div id="edit2" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -320,50 +307,8 @@
 
 
 
-  <!-- /container -->
 
-  <!-- /f -->
-
-  <!-- ========== CAROUSEL SECTION ========== -->
-<!--   <section id="portfolio" name="portfolio"></section>
-  <div id="f">
-    <div class="container">
-      <div class="row centered">
-        <h3>SAVED LOCATIONS PROJECTS</h3>
-        <p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
-
-        <div class="col-lg-6 col-lg-offset-3">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            Wrapper for slides
-            <div class="carousel-inner">
-              <div class="item active centered">
-                <img class="img-responsive" src="https://i.imgur.com/QLA65Ny.jpg" alt="">
-              </div>
-              <div class="item centered">
-                <img class="img-responsive" src="https://i.imgur.com/oioq1XA.jpg" alt="">
-              </div>
-              <div class="item centered">
-                <img class="img-responsive" src="https://i.imgur.com/vOTuiYf.jpg" alt="">
-              </div>
-            </div>
-            <br>
-            <br>
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-          </div>
-        </div>
-        col-lg-8
-      </div>
-      row
-    </div>
-    container
-  </div> -->
-  <!-- f -->
-
-  <!-- ========== CONTACT SECTION ========== -->
+  <!-- ========== FOOTER ========== -->
   
 
   <div id="copyrights">
@@ -411,7 +356,7 @@
 
 
 
-</body>
+
 
 
 

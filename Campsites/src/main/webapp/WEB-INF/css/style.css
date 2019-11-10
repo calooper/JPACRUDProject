@@ -4,7 +4,7 @@
 * Author: TemplateMag.com
 * License: https://templatemag.com/license/
 */
-
+/* 
 body {
   background-color: #f2f2f2;
   font-family: 'EB Garamond', serif;
@@ -13,7 +13,7 @@ body {
   color: #555;
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
-}
+} */
 
 /* Titles */
 
@@ -144,37 +144,6 @@ hr {
 #f img {
   text-align: center;
 }
-
-/* MENU CONF*/
-
-
-
-
-
-
-/* Push the body after clicking the menu button */
-
-.body-push {
-  overflow-x: hidden;
-  position: relative;
-  left: 0;
-}
-
-.body-push-toright {
-  left: 200px;
-}
-
-.body-push-toleft {
-  left: -200px;
-}
-
-
-
-
-
-
-
-
 
 @-webkit-keyframes animate-loading {
   0% {
