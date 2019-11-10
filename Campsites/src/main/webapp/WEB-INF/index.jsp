@@ -70,7 +70,7 @@
   <a href="#contact">Contact</a> -->
   <div class="search-container">
     <form action="getCampsite.do" method="GET">
-      <input type="text" placeholder="Search by Id.." name="cid" >
+      <input type="number" placeholder="Search by Id.." name="cid" required>
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
@@ -132,6 +132,18 @@
       </thead>
       <tbody>
         <c:forEach items="${ campsiteList}" var="campsite">
+        
+        
+        <c:choose>
+    		<c:when test="${campsite.id == null}">
+        		<strong style="padding-left:35em; color:red">Sorry, no campsite with this Id exists</strong>
+       		 	<br>
+       		  	<br>
+       		   <br>
+    		</c:when>    
+    	<c:otherwise>
+       		
+        
           <tr id="d1">
           	<td></td>
           	<td></td>
@@ -162,8 +174,12 @@
                 </button>
               </form>
             </td>
+            
 
           </tr>
+          
+           </c:otherwise>
+		</c:choose>
         </c:forEach>
 
         <%-- 	<form action="addCampsite.do" method="GET"> <%--  --%>
@@ -246,7 +262,7 @@
 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"></button>
-          <h4 class="modal-title">Edit a Campsite "${ campsiteToBeEdited.description }" jj ${ campsiteToBeEdited.description }</h4>
+          <h4 class="modal-title">Edit a Campsite</h4>
         </div>
 
 
