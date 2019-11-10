@@ -41,7 +41,7 @@ store their own sites.
 
 
 
-###LESSONS LEARNED
+### LESSONS LEARNED
 This project was great for putting many of the pieces together that I've
 learned over the last two months - especially the last few weeks. This project,
 more than others I have worked on, really forced me to better understand
