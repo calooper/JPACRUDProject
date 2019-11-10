@@ -75,9 +75,7 @@ public class CampsiteController {
 		List<Campsite> campsiteList;
 		campsiteList = campsiteDAO.getAllCampsites();
 		model.addAttribute("campsiteList", campsiteList);
-		
-		
-		
+
 		return "WEB-INF/index.jsp";
 
 	}
@@ -86,6 +84,23 @@ public class CampsiteController {
 	public String home(Model model) {
 		List<Campsite> campsiteList;
 		campsiteList = campsiteDAO.getAllCampsites();
+		model.addAttribute("campsiteList", campsiteList);
+
+		return "WEB-INF/index.jsp";
+
+	}
+
+	@RequestMapping(path = "editCampsite.do", method = RequestMethod.GET)
+	public String editCampsiteRedirect(@RequestParam int id, String description, String state, String mountainRange,
+			Model model) {
+		List<Campsite> campsiteList;
+
+		System.out.println("in edit redirect");
+
+//		Campsite campsiteToBeEdited = campsiteDAO.findById(id);
+		campsiteDAO.editCampsite(id, description, state, mountainRange);
+		campsiteList = campsiteDAO.getAllCampsites();
+
 		model.addAttribute("campsiteList", campsiteList);
 
 		return "WEB-INF/index.jsp";

@@ -29,39 +29,47 @@ public class CampsiteDAOJpaImpl implements CampsiteDAO {
 		String queryString = "SELECT c FROM Campsite c";
 
 		List<Campsite> campsiteList = em.createQuery(queryString, Campsite.class).getResultList();
-		
-		
+
 		return campsiteList;
 	}
-	
-	public boolean deleteCampsite(int id ) {
 
-		//String queryString = "SELECT c FROM Campsite c WHERE c.id= :id";
+	public boolean deleteCampsite(int id) {
+
+		// String queryString = "SELECT c FROM Campsite c WHERE c.id= :id";
 		Campsite a = em.find(Campsite.class, id);
 		System.out.println("delete");
 		em.remove(a);
 
 		return true;
 	}
-	
-	public Campsite addCampsite(String description, String state, double latitude, double longitude, String mountainRange) {
 
-		
-		
+	public Campsite addCampsite(String description, String state, double latitude, double longitude,
+			String mountainRange) {
+
 		System.out.println(description + "in DAO, param print");
-		Campsite newSite = new Campsite( description, state, latitude, longitude, mountainRange);
+		Campsite newSite = new Campsite(description, state, latitude, longitude, mountainRange);
 		System.out.println(newSite.toString());
 		System.out.println("in DAO, printing newSIte");
 		em.persist(newSite);
-		int id = newSite.getId();
-//	    em.flush();
-//	    em.getTransaction().commit();
-		
 
-		
-		
+
 		return newSite;
 	}
 
+	public void editCampsite(int id, String description, String state, String mountainRange) {
+
+		System.out.println(description + "in DAO, editing campsite");
+		
+		Campsite managedCampsite = em.find(Campsite.class, id);
+		managedCampsite.setDescription(description);
+		managedCampsite.setState(state);
+		managedCampsite.setMountainRange(mountainRange);
+		
+		System.out.println(managedCampsite.getDescription());
+		
+	
+		return ;
+
+	}
 
 }

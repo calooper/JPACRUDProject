@@ -48,12 +48,19 @@
 
 
 <style><%@include file="/WEB-INF/css/main.css"%></style>
+<style><%@include file="/WEB-INF/css/style.css"%></style>
+<style><%@include file="/WEB-INF/js/main.js"%></style>
 
 
 
 <meta charset="UTF-8">
 
 </head>
+
+
+
+<!-- Start Paste -->
+
 
 
 <div class="topnav navbar-fixed-top" >
@@ -76,185 +83,332 @@
 
 
 <body> 
-     <div class="bg"></div> 
+
+  
+<!-- <body data-spy="scroll" data-offset="0" data-target="#theMenu"> -->
+
+  <!-- Menu -->
+<!--   <nav class="menu" id="theMenu">
+    <div class="menu-wrap">
+      <h1 class="logo"><a href="index.html#home">Minimal</a></h1>
+      <i class="fa fa-times-circle menu-close"></i>
+      <a href="#home" class="smoothscroll">Home</a>
+      <a href="#about" class="smoothscroll">About</a>
+      <a href="#portfolio" class="smoothscroll">Portfolio</a>
+      <a href="#contact" class="smoothscroll">Contact</a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-dribbble"></i></a>
+      <a href="#"><i class="fa fa-envelope"></i></a>
+    </div>
+
+    Menu button
+    <div id="menuToggle"><i class="fa fa-bars"></i></div>
+  </nav> -->
+
+  <!-- ========== HEADER SECTION ========== -->
+  <section id="home" name="home"></section>
+  <div id="headerwrap">
+    <div class="container">
+      <div class="logo">
+        <img >
+      </div>
+      <br>
+      <div class="row">
+        <h1>SAVE A SPOT</h1>
+        <br>
+        <h3>A webite designed to remember campsites</h3>
+        <br>
+        <br>
+        <div class="col-lg-6 col-lg-offset-3">
+        </div>
+      </div>
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /headerwrap -->
+
+  <!-- ========== TABLE SECTION ========== -->
+
+
+
+  <br>
+  <br>
+  <div style="background-color: white" class="row">
+    <table class="table table-hover table-responsive">
+
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>State</th>
+          <th>Mountain range</th>
+          <th>Coordinates</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <c:forEach items="${ campsiteList}" var="campsite">
+          <tr id="d1">
+            <td>${campsite.id }</td>
+            <td id="f1">${ campsite.description}</td>
+            <td id="l1">${ campsite.state}</td>
+            <td id="m1">${ campsite.mountainRange}</td>
+            <td id="m2"><a href="https://maps.google.com/?ll=" ${ campsite.latitude}, ${ campsite.longitude}">${ campsite.latitude},${ campsite.longitude}</a> </td>
+
+
+            <td>
+              <%-- <form action="editCampsite.do" method="GET" > --%>
+
+              <button type="submit" data-toggle="modal" value=${ campsite.id} name="campsite" data-target="#edit2" data-uid="2" class="update btn btn-warning btn-sm">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+
+              <%-- </form> --%>
+            </td>
+            <td>
+              <%-- <jsp:forward page="deleteCampsite.do" /> --%>
+              <form action="deleteCampsite.do" method="GET" name="id" value=${ campsite.id}>
+
+                <button type="submit" data-toggle="modal" data-uid="1" class="delete btn btn-danger btn-sm" name="id" value=${ campsite.id}>
+
+                  <span class="glyphicon glyphicon-trash"></span>
+
+                </button>
+              </form>
+            </td>
+
+          </tr>
+        </c:forEach>
+
+        <%-- 	<form action="addCampsite.do" method="GET"> <%--  --%>
+        <tr id="d2">
+
+          <!--  <td id="f2">Jane</td> -->
+          <td><input type="hidden" id="f2"></td>
+          <!-- <td id="l2">Wick</td> -->
+          <td><input type="hidden" id="l2"></td>
+
+          <!-- <td id="m1">Doe</td> -->
+          <td><input type="hidden" id="m1"></td>
+          <!-- <td id="m2">Map</td> -->
+          <td><input type="hidden" id="m2"></td>
+
+
+
+          <td>
+          <td><strong>Add</strong></td>
+          <td><button type="submit" data-toggle="modal" data-target="#edit" data-uid="2" class="add btn btn-primary btn-sm">
+              <span class="glyphicon glyphicon-plus" value="Submit Button"></span>
+            </button></td>
+          </td>
+
+
+        </tr>
+
+        <%-- 	</form> --%>
+
+
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <!--  ADD POP_UP MENU-->
+  <div id="edit" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h4 class="modal-title">Add a Campsite </h4>
+        </div>
+
+
+        <form action="addCampsite.do" method="POST">
+          <div class="modal-body">
+            <input type="text" class="form-control" name="description" placeholder="Description" required>
+
+            <input type="text" class="form-control" name="state" placeholder="State">
+
+            <input type="text" class="form-control" name="mountainRange" placeholder="Moutain Range" required>
+
+            <input type="number" step="0.01" class="form-control" name="latitude" placeholder="Latitude in Decimal Degrees" required>
+
+            <input type="number" step="0.01" class="form-control" name="longitude" placeholder="Longitude in Decimal Degrees" required>
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-warning" class="form-control">Update</button>
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit pop-up menu  -->
+
+  <div id="edit2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"></button>
+          <h4 class="modal-title">Edit a Campsite "${ campsiteToBeEdited.description }" jj ${ campsiteToBeEdited.description }</h4>
+        </div>
+
+
+        <form action="editCampsite.do" method="GET">
+          <div class="modal-body">
+            <input type="number" class="form-control" name="id" placeholder="${ campsiteToBeEdited.description }" required>
+
+            <input type="text" class="form-control" name="description" placeholder="Description" required>
+
+            <input type="text" class="form-control" name="state" placeholder="State">
+
+            <input type="text" class="form-control" name="mountainRange" placeholder="Moutain Range" required>
+
+            <!-- <input type="number" step="0.01" class="form-control" name="latitude"
+  					placeholder="Latitude in Decimal Degrees" required>
+
+  					<input  type="number" step="0.01" class="form-control" name="longitude"
+  					placeholder="Longitude in Decimal Degrees" required> -->
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-warning" class="form-control">Update</button>
+
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="delete" class="modal fade" role="dialog">
+  	<div class="modal-dialog">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<button type="button" class="close" data-dismiss="modal">×</button>
+  				<h4 class="modal-title">Delete Data</h4>
+  			</div>
+  			<div class="modal-body">
+  				<strong>Are you sure you want to delete this data?</strong>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" id="del" class="btn btn-danger"
+  					data-dismiss="modal">Delete</button>
+  				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
 
 
 
 
 
 
-<div style="background-color: rgba(255, 255, 255, .7)" class="container">
 
 
-<br>
-	<br>
-	<div class="row">
-		<table class="table table-hover table-responsive">
-			
 
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Description</th>
-					<th>State</th>
-					<th>Mountian range</th>
-					<th>Latitude</th>
-					<th>Longitude</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${ campsiteList}" var="campsite">
-					<tr id="d1">
-						<td>${campsite.id }</td>
-						<td id="f1">${ campsite.description}</td>
-						<td id="l1">${ campsite.state}</td>
-						<td id="m1">${ campsite.mountainRange}</td>
-						<td id="m2">${ campsite.latitude}</td>
-						<td id="m3">${ campsite.longitude}</td>
+  <!-- /container -->
 
+  <!-- /f -->
 
-						<td><button type="button" data-toggle="modal"
-								data-target="#edit" data-uid="1"
-								class="update btn btn-warning btn-sm">
-								<span class="glyphicon glyphicon-pencil"></span>
-							</button></td>
+  <!-- ========== CAROUSEL SECTION ========== -->
+<!--   <section id="portfolio" name="portfolio"></section>
+  <div id="f">
+    <div class="container">
+      <div class="row centered">
+        <h3>SAVED LOCATIONS PROJECTS</h3>
+        <p class="centered"><i class="icon icon-circle"></i><i class="icon icon-circle"></i><i class="icon icon-circle"></i></p>
 
+        <div class="col-lg-6 col-lg-offset-3">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            Wrapper for slides
+            <div class="carousel-inner">
+              <div class="item active centered">
+                <img class="img-responsive" src="https://i.imgur.com/QLA65Ny.jpg" alt="">
+              </div>
+              <div class="item centered">
+                <img class="img-responsive" src="https://i.imgur.com/oioq1XA.jpg" alt="">
+              </div>
+              <div class="item centered">
+                <img class="img-responsive" src="https://i.imgur.com/vOTuiYf.jpg" alt="">
+              </div>
+            </div>
+            <br>
+            <br>
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+          </div>
+        </div>
+        col-lg-8
+      </div>
+      row
+    </div>
+    container
+  </div> -->
+  <!-- f -->
 
-						<td>
-							<%-- <jsp:forward page="deleteCampsite.do" /> --%>
-							<form action="deleteCampsite.do" method="GET" name="id"
-								value=${ campsite.id}>
-								
-								<button type="submit" data-toggle="modal" data-uid="1"
-									class="delete btn btn-danger btn-sm" name="id"
-									value=${ campsite.id}>
+  <!-- ========== CONTACT SECTION ========== -->
+  
 
-									<span class="glyphicon glyphicon-trash"></span>
+  <div id="copyrights">
+    <div class="container">
+      <p>
 
-								</button>
-							</form>
-						</td>
+      </p>
+      <div class="credits">
+        <!--
+          You are NOT allowed to delete the credit link to TemplateMag with free version.
+          You can delete the credit link only if you bought the pro version.
+          Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/minimal-bootstrap-template/
+          Licensing information: https://templatemag.com/license/
+        -->
+        Created with Minimal template by <a href="https://templatemag.com/">TemplateMag</a>
+      </div>
+    </div>
+  </div>
 
-					</tr>
-				</c:forEach>
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/php-mail-form/validate.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
 
-			<%-- 	<form action="addCampsite.do" method="GET"> <%--  --%>
-					<tr id="d2"> 
-						<td><strong>Add</strong></td>
-						<!--  <td id="f2">Jane</td> --> 
-						<td><input type="hidden" id="f2" ></td>
-						<!-- <td id="l2">Wick</td> -->
-						<td><input type="hidden" id="l2"></td>
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
 
-						<!-- <td id="m1">Doe</td> -->
-						<td><input type="hidden" id="m1"></td>
-						<!-- <td id="m2">Map</td> -->
-						<td><input type="hidden" id="m2"></td>
-						
-						<td><input type="hidden" id="m3"></td>  
-
-
-						<td>
-						<td><button type="submit" data-toggle="modal"
-								data-target="#edit" data-uid="2"
-								class="add btn btn-primary btn-sm">
-								<span class="glyphicon glyphicon-plus" value="Submit Button"></span>
-							</button></td>
-						</td>
+</body>
 
 
-					</tr>
-
-			<%-- 	</form> --%>
-
-				
-			</tbody>
-		</table>
-	</div>
-</div>
-<div id="edit" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-		
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"></button>
-				<h4 class="modal-title">Add a Campsite</h4>
-			</div>
-			
-			
-			<form action="addCampsite.do" method="POST">
-			<div class="modal-body">
-				<input  type="text" class="form-control" name="description"
-					placeholder="Description"> 
-					
-				<input  type="text"
-					class="form-control" name="state" placeholder="State">
-					
-				<input  type="text" class="form-control" name="mountainRange"
-					placeholder="Moutain Range">
-					
-					<input type="number" step="0.01" class="form-control" name="latitude"
-					placeholder="Latitude in Decimal Degrees">
-					
-					<input  type="number" step="0.01" class="form-control" name="longitude"
-					placeholder="Longitude in Decimal Degrees">
-			</div>
-			
-			
-			<div class="modal-footer">
-				<button type="submit" class="btn btn-warning"  class="form-control">Update</button>
-		
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-			
-				</form>	
-		</div>
-	</div>
-</div>
-<div id="delete" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h4 class="modal-title">Delete Data</h4>
-			</div>
-			<div class="modal-body">
-				<strong>Are you sure you want to delete this data?</strong>
-			</div>
-			<div class="modal-footer">
-				<button type="button" id="del" class="btn btn-danger"
-					data-dismiss="modal">Delete</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
 
 
-<!-- Footer -->
 
-<style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: grey;
-  color: white;
-  text-align: center;
-   margin: 0;
-   padding: 0px;
 
-}
-</style>
 
-<div class="footer">
-  <p></p>
-</div>
-   
+
+
+
+
+
+
+
+
+
 
 
 </body>
