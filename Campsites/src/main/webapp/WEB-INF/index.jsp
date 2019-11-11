@@ -208,9 +208,9 @@
 
             <input type="text" class="form-control" name="mountainRange" placeholder="Moutain Range" required>
 
-            <input type="number" step="0.01" class="form-control" name="latitude" placeholder="Latitude in Decimal Degrees" required>
+            <input type="number" step="0.000001" class="form-control" name="latitude" placeholder="Latitude in Decimal Degrees" required>
 
-            <input type="number" step="0.01" class="form-control" name="longitude" placeholder="Longitude in Decimal Degrees" required>
+            <input type="number" step="0.000001" class="form-control" name="longitude" placeholder="Longitude in Decimal Degrees" required>
           </div>
 
 

@@ -74,8 +74,9 @@ public class CampsiteController {
 
 		double latitudeD = Double.parseDouble(latitude);
 		double longitudeD = Double.parseDouble(latitude);
+		
 
-		Campsite newCampSite = campsiteDAO.addCampsite(description, state, latitudeD, longitudeD, mountainRange);
+		campsiteDAO.addCampsite(description, state, latitudeD, longitudeD, mountainRange);
 
 		List<Campsite> campsiteList;
 		campsiteList = campsiteDAO.getAllCampsites();
